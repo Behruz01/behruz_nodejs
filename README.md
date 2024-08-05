@@ -33,13 +33,13 @@ Instructions for installing and setting up the project.
 
 Ensure you have the following installed:
 
-Node.js (version 14.x or higher)
+- **Node.js (version 14.x or higher)**
 
-Redis
+- **Redis**
 
-PostgreSQL
+- **PostgreSQL**
 
-If you are using Windows, enable Redis CLI by opening an Ubuntu terminal for authorization.
+- **If you are using Windows, enable Redis CLI by opening an Ubuntu terminal for authorization.**
 
 ### Installation Steps
 
