@@ -1,10 +1,6 @@
-Creating a `README.md` file for a project is essential for documentation and helping others (or yourself) understand how to use, develop, and contribute to your project. Here’s a general template for a `README.md` file that you can customize based on your project’s requirements:
+# Authorization for mapme.com
 
----
-
-# Project Title
-
-A brief description of your project, its purpose, and what it aims to accomplish.
+For user and admin authorization
 
 ## Table of Contents
 
@@ -19,13 +15,15 @@ A brief description of your project, its purpose, and what it aims to accomplish
 
 ## Introduction
 
-Provide a detailed introduction to your project, including the motivation behind it and any relevant background information.
+The authorization module for mapme.com provides a robust and secure mechanism for user and admin authentication and authorization. This module ensures that only authorized users can access specific resources and perform certain actions, thereby enhancing the security and integrity of the application.
 
 ## Features
 
-- **Feature 1**: A brief description of this feature.
-- **Feature 2**: A brief description of this feature.
-- **Feature 3**: A brief description of this feature.
+- **User Authentication**: Secure user login and registration using JWT.
+- **Admin Authentication**: Separate authentication mechanism for admins.
+- **Role-Based Access Control**: Fine-grained access control based on user roles.
+- **Session Management**: Efficient session handling using Redis
+- **API Documentation**: Comprehensive API documentation with Swagger.
 
 ## Installation
 
@@ -33,33 +31,50 @@ Instructions for installing and setting up the project.
 
 ### Prerequisites
 
-List any software, libraries, or tools required before installation.
+Ensure you have the following installed:
+
+Node.js (version 14.x or higher)
+
+Redis
+
+PostgreSQL
+
+If you are using Windows, enable Redis CLI by opening an Ubuntu terminal for authorization.
 
 ### Installation Steps
 
 1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/Behruz01/behruz_nodejs
    ```
 
 2. **Navigate to the project directory**:
+
    ```bash
-   cd yourproject
+   cd behruz_nodejs
    ```
 
 3. **Install dependencies**:
-   - For Python projects:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - For Node.js projects:
-     ```bash
-     npm install
-     ```
-   - For other projects, provide relevant instructions.
 
-4. **Additional setup**:
-   If there are additional setup steps, provide them here.
+   ```bash
+   npm install
+   ```
+
+4. **Set up environment variables**:
+   Create a .env file in the root directory and add the necessary environment variables
+
+```
+DATABASE_URL=your_database_url
+REDIS_URL=your_redis_url
+JWT_SECRET=your_jwt_secret
+```
+
+5.  **Start the application**
+
+```
+npm run start:dev
+```
 
 ## Usage
 
@@ -67,29 +82,46 @@ Instructions for how to use the project once it’s set up.
 
 ### Basic Usage
 
-Provide examples of how to run or use your project. For instance:
+To start the application in development mode:
 
 ```bash
 # Run the application
-npm start
-```
-
-Or:
-
-```bash
-# Start the server
-python app.py
+npm run start:dev
 ```
 
 ### Examples
 
-Provide code snippets or examples showing how to use key features of your project.
+Example of running the server:
 
-```python
-# Example code
-import project
+```
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RoutesResolver] AuthControllerV1 {/api/auth} (version: 1): +111ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RouterExplorer] Mapped {/api/auth/login, POST} (version: 1) route +10ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RouterExplorer] Mapped {/api/auth/logout, POST} (version: 1) route +1ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RouterExplorer] Mapped {/api/auth/register, POST} (version: 1) route +0ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RouterExplorer] Mapped {/api/auth/refresh-token, POST} (version: 1) route +1ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [RouterExplorer] Mapped {/api/auth/superadminlogin, POST} (version: 1) route +1ms
+[Nest] 19068  - 08/05/2024, 3:23:26 PM     LOG [NestApplication] Nest application successfully started +2ms
+🚀 Server running on port: 3000
+```
 
-project.do_something()
+User Login
+
+```
+POST /api/v1/auth/login
+{
+  "email": "user@example.com",
+  "password": "userpassword"
+}
+```
+
+User Registration
+
+```
+POST /api/v1/auth/register
+{
+  "email": "newuser@example.com",
+  "password": "newuserpassword"
+}
 ```
 
 ## Configuration
@@ -98,15 +130,21 @@ Details on how to configure the project, such as environment variables, configur
 
 ### Configuration Files
 
-- **File name**: Description of what the file is used for.
+- **.env**: Environment variables for configuring the application.
 
 ### Environment Variables
 
-- **VARIABLE_NAME**: Description of what this variable does and its possible values.
+- **PORT**: The port on which the application runs.
+- **DATABASE_HOST**: Hostname of the PostgreSQL database.
+- **DATABASE_PORT**: Port number of the PostgreSQL database.
+- **DATABASE_NAME**: Name of the PostgreSQL database.
+- **DATABASE_USER**: Username for the PostgreSQL database.
+- **DATABASE_PASSWORD**: Password for the PostgreSQL database.
+- **JWT_SECRET**: Secret key used for signing JWT tokens.
 
 ## Contributing
 
-Guidelines for contributing to the project.
+We welcome contributions to improve this project. Please follow the steps below to contribute:
 
 ### How to Contribute
 
@@ -128,33 +166,29 @@ Guidelines for contributing to the project.
 
 ### Code of Conduct
 
-If applicable, include a link to the code of conduct.
+Please adhere to our Code of Conduct while contributing.
 
 ## License
 
-State the license under which the project is distributed. For example:
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT LICENSE - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
 Information on how to contact the project maintainers or team.
 
-- **Name**: [Your Name](mailto:your.email@example.com)
-- **GitHub**: [yourusername](https://github.com/yourusername)
+- **Name**: [Behruz](mailto:ibragimovbehruz822@gmail.com)
+- **GitHub**: [Behruz01](https://github.com/Behruz01)
 
 ---
 
 ### **Explanation:**
 
-- **Project Title**: Name of your project.
-- **Introduction**: Overview and purpose of the project.
-- **Features**: Key features or highlights.
-- **Installation**: Steps to install and set up the project.
-- **Usage**: How to use the project, including examples.
-- **Configuration**: Any configuration needed to get the project running.
-- **Contributing**: How others can contribute to the project.
+- **Project Title**: Authorization for mapme.com
+- **Introduction**: Overview and purpose of the authorization module.
+- **Features**: Key features including user and admin authentication, role-based access control.
+- **Installation**: Steps to install and set up the project, including environment variable setup.
+- **Usage**: How to use the project, including API endpoints for registration and login.
+- **Configuration**: Details on configuring the project with environment variables.
+- **Contributing**: Guidelines for contributing to the project.
 - **License**: Licensing information.
-- **Contact**: How to get in touch with you or the project maintainers.
-
-Feel free to modify this template to better suit the specifics of your project.# GIS
+- **Contact**: How to get in touch with the project maintainers.
